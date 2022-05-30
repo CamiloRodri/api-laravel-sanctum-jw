@@ -15,10 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('diaries', function (Blueprint $table) {
+            $table->bigIncrements('id')->comment('LLave Primaria Tabla de Agenda Medica');
+            $table->timestamp('date_diary')->nullable()->comment('Campo que almacena la fecha de la cita');
+            $table->unsignedBigInteger('id_doctor')->nullable()->comment('Llave Forenea con Doctores');
+            $table->foreign('id_doctor')->references('id')->on('doctors');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('diaries');
     }
 };

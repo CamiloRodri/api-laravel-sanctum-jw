@@ -4,11 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * @author CRISTHIAN CAMILO RODRIGUEZ GALINDO <camilorodri28@outlook.com>
+ */
 return new class extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * @method up  -  Metodo que ejecuta la migracion de creacion de tabla de tipos de vivienda
      * @return void
      */
     public function up()
@@ -25,8 +27,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
-     *
+     * @method down  -  Reverse the migrations.
      * @return void
      */
     public function down()

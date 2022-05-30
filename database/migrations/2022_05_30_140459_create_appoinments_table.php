@@ -15,13 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('appoinments', function (Blueprint $table) {
+            $table->bigIncrements('id')->comment('LLave Primaria Tabla de Citas Medicas');
+            $table->unsignedBigInteger('id_patient')->nullable()->comment('Llave Forenea con Pacientes');
+            $table->unsignedBigInteger('id_diaries')->nullable()->comment('Llave Forenea con Agenda Medica');
+            $table->foreign('id_patient')->references('id')->on('patients');
+            $table->foreign('id_diaries')->references('id')->on('diaries');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('appoinments');
     }
 };

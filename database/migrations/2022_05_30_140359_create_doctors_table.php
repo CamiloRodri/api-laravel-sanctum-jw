@@ -15,13 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->bigIncrements('id')->comment('LLave Primaria Tabla de Doctorees');
+            $table->string('name')->comment('Nombre del Doctor');
+            $table->string('identification_number')->comment('Número de Identificación del Doctor');
+            $table->unsignedBigInteger('id_speciality')->nullable()->comment('Llave Forenea con Especialidad Medica');
+            $table->foreign('id_speciality')->references('id')->on('specialities');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('doctors');
     }
 };

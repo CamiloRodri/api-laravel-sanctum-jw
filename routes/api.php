@@ -21,4 +21,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('logout', [App\Http\Controllers\Api\V1\AuthApiController::class, 'logout']);
     Route::get('user', [App\Http\Controllers\Api\V1\UserController::class, 'show']);
     Route::get('users', [App\Http\Controllers\Api\V1\UserController::class, 'index']);
+
+    Route::apiResource('specialities', App\Http\Controllers\Api\V1\SpecialityController::class)->only(['index', 'store']);
+    Route::apiResource('patients', App\Http\Controllers\Api\V1\PatientController::class)->only(['index', 'show', 'store']);
+    Route::apiResource('doctors', App\Http\Controllers\Api\V1\DoctorController::class)->only(['index', 'show', 'store']);
+    Route::apiResource('diaries', App\Http\Controllers\Api\V1\DiaryController::class)->only(['store', 'show']);
+    Route::apiResource('appoinments', App\Http\Controllers\Api\V1\AppoinmentController::class)->only(['store']);
 });

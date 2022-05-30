@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
-
+/**
+ * @author CRISTHIAN CAMILO RODRIGUEZ GALINDO <camilorodri28@outlook.com>
+ * @class AuthApiController
+ */
 class AuthApiController extends Controller
 {
     public function response($user)
