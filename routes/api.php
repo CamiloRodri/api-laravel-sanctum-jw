@@ -26,5 +26,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('patients', App\Http\Controllers\Api\V1\PatientController::class)->only(['index', 'show', 'store']);
     Route::apiResource('doctors', App\Http\Controllers\Api\V1\DoctorController::class)->only(['index', 'show', 'store']);
     Route::apiResource('diaries', App\Http\Controllers\Api\V1\DiaryController::class)->only(['store', 'show']);
-    Route::apiResource('appoinments', App\Http\Controllers\Api\V1\AppoinmentController::class)->only(['store']);
+    Route::apiResource('appoinments', App\Http\Controllers\Api\V1\AppoinmentController::class)->only(['store', 'show', 'update']);
+    Route::post('updateappoinments/{appoinment}', [App\Http\Controllers\Api\V1\AppoinmentController::class, 'update']);
 });
