@@ -42,7 +42,6 @@ class DiaryController extends Controller
         $diaries = Diary::select('diaries.id', 'diaries.date_diary')
                 ->where('id_doctor', $id)
                 ->whereNotIn('id', $appoinments)
-                // ->join('appoinments as ap', 'diaries.id', '<>', 'ap.id_diaries')
                 ->get();
         return $diaries;
     }
